@@ -36,16 +36,36 @@ const questions = [
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 GPL v3
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+
 
 MIT
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
 
 
 
 */
 
-const licenses = [];
+const licenses = [
+  {
+    name: "APACHE",
+    value:
+      "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
+  },
+  {
+    name: "GPL v3",
+    value:
+      "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",
+  },
+  {
+    name: "MIT",
+    value:
+      "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
+  },
+];
 
 // function to write README file
 function writeToFile(fileName, data) {
@@ -88,7 +108,8 @@ function init() {
       {
         name: "license",
         message: questions[6],
-        type: "input",
+        type: "list",
+        choices: licenses,
       },
       {
         name: "contributions",
@@ -103,6 +124,7 @@ function init() {
     ])
     .then((response) => {
       console.log(response);
+      // console.log(response.license);
       writeToFile("test.md", response);
     });
 }
