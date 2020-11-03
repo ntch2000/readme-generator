@@ -48,7 +48,7 @@ MIT
 
 
 */
-
+// array holds the information for the licenses the user can select from
 const licenses = [
   {
     name: "APACHE",
@@ -103,10 +103,10 @@ const licenses = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-  const markdown = generateMarkdown(data);
+  // sets the copyright owner information for the license section of the readme after the markdown string is generated
+  const newData = generateMarkdown(data).replace("OWNER", data.githubUser);
 
-  const newData = markdown.replace("OWNER", data.githubUser);
-  //console.log(newData);
+  // writes the file
   fs.writeFile(fileName, newData, (err) => {
     if (err) throw err;
     console.log("Created file successfully!");
@@ -161,21 +161,22 @@ function init() {
       },
     ])
     .then((response) => {
-      //console.log(response);
-      //console.log(response.license);
+      // checks to see which license the user selected from the licenses[] array
       const licenseInfo = licenses.filter((license) => {
         if (license.name === response.license) {
           return license;
         }
       });
-
+      // deconstructs the array to obtain the license badge and license text
       const { value, text } = licenseInfo[0];
 
       //console.log(`${value} has this text: ${text}`);
+      // sets two new properties to the response object from prompt() to include the license badge and license text
       response["licenseBadge"] = value;
       response["licenseText"] = text;
       //console.log(response);
-      writeToFile("test.md", response);
+      // calls the function to write the readme.md file
+      writeToFile("README-Generated.md", response);
     });
 }
 
