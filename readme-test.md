@@ -1,5 +1,9 @@
 # Project Title
 
+---
+
+License badge location
+
 ## Description
 
 This is where the project description will go.

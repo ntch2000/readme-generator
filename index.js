@@ -1,8 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
-const { title } = require("process");
 
+const year = new Date().getFullYear();
 /* readme sections
 Project Title
 Description
@@ -54,7 +54,7 @@ const licenses = [
     name: "APACHE",
     value:
       "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
-    text: `Copyright [yyyy] [name of copyright owner]
+    text: `Copyright ${year} OWNER
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -72,7 +72,7 @@ const licenses = [
     name: "GNU GPL v3",
     value:
       "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",
-    text: `Copyright (C) <year>  <name of author>
+    text: `Copyright (C) ${year}  OWNER
 
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -91,7 +91,7 @@ const licenses = [
     name: "MIT",
     value:
       "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
-    text: `Copyright <YEAR> <COPYRIGHT HOLDER>
+    text: `Copyright ${year} OWNER
 
       Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
       
@@ -103,7 +103,11 @@ const licenses = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-  fs.writeFile(fileName, generateMarkdown(data), (err) => {
+  const markdown = generateMarkdown(data);
+
+  const newData = markdown.replace("OWNER", data.githubUser);
+  //console.log(newData);
+  fs.writeFile(fileName, newData, (err) => {
     if (err) throw err;
     console.log("Created file successfully!");
   });
@@ -143,7 +147,7 @@ function init() {
         name: "license",
         message: questions[6],
         type: "list",
-        choices: ["APACHE", "GPL v3", "MIT"],
+        choices: ["APACHE", "GNU GPL v3", "MIT"],
       },
       {
         name: "contributions",
@@ -177,5 +181,3 @@ function init() {
 
 // function call to initialize program
 init();
-
-//console.log({ title });
