@@ -1,7 +1,5 @@
 # Readme Generator
 
----
-
 ## Description
 
 This application allows users to create a quality README file via the command-line. Users are prompted with questions that correspond to each section of a basic README file and a README.md file is generated with the inputs to the prompts.
@@ -14,8 +12,6 @@ This application allows users to create a quality README file via the command-li
 - [Installation](#installation)
 - [Application Screenshot](#application-screenshot)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [Tests](#tests)
 - [Questions](#questions)
 - [Credits](#credits)
 
