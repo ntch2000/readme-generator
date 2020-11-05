@@ -55,6 +55,14 @@ npm install
 
 ## Application Screenshot
 
+![Terminal Prompts](./assets/terminal-prompts.jpg "Terminal Prompts Screenshot")
+
+_Sample screenshot of the prompt questions and the user responses._
+
+![Generated Readme](./assets/generated-readme-image.jpg "Generated README.md file Screenshot")
+
+_Sample screenshot of the README.md file generated with the user inputs_
+
 ## Usage
 
 Once the project files are clones and the dependency files installed from npm, users can run the application from their working directory in the terminal by running the following command.
@@ -64,6 +72,8 @@ node index.js
 ```
 
 This will start the application with prompts the user must answer. The responses to these questions will fill the content of each heading and a README file will be generated at the conclusion of the prompts.
+
+A video of this can be found at the following link [Readme Generator Walkthrough Video](https://drive.google.com/file/d/1GWd3gflwhlwWFDh9HLrnRbPna9A6JiAq/view?usp=sharing).
 
 ## Questions
 
